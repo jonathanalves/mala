@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Feliz Aniversário</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Great+Vibes&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        
+        <script>
+            
+            jQuery( document ).ready(function($) {
+
+                var nome = '';
+                
+                function start(){
+                    
+                    nome = prompt('Informe seu nome', nome);
+                    if (nome !== null){
+                        $('#start').hide();
+                        $('#sprite-mala-21').html(nome);
+                        $('#abre-mala, #mala-wrapper').show();
+                    }
+                }
+                     
+               start();
+                
+                $('#abre-mala').click(function(e){
+                    $(this).hide('fast');
+
+                    e.preventDefault();
+                    count = 1;
+                    while( count <= 21 ){
+                        abre_frame_mala(count);
+                        count++;
+                    }
+
+                });
+                
+                function abre_frame_mala(frame){
+
+                    time =  frame * 15;
+                    if(frame == 21){
+                        time = 19 * 15;
+                    }
+                    
+                    setTimeout(function(){
+                        
+                        if( frame < 21 ){
+                            $('#sprite-mala-'+(frame-1)).remove();     
+                        }                   
+                        
+                        $('#sprite-mala-'+frame).show();
+                        
+                    }, time);
+                    
+                }
+
+            });
+        </script>
+        
+        <style>
+            
+            body, html{
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+            }
+            
+            body{
+                background: url('bkg.jpg') repeat-x center 406px;
+            }
+            
+            #mala-wrapper{
+                width: 545px;
+                margin: 0 auto;
+            }
+            
+            .sprite{
+                background: url('mala.png') no-repeat 0 0 transparent;
+                text-indent: -999999px;
+                display: inline-block;
+                width: 545px;
+                height: 455px;
+                position: absolute;
+                top: 50px;
+                display: none;
+            }
+            
+            #sprite-mala-1{ background-position: -100px -55px; display: block; background-color: transparent; }
+            #sprite-mala-2{ background-position: -100px -510px; }
+            #sprite-mala-3{ background-position: -100px -987px; }
+            #sprite-mala-4{ background-position: -100px -1465px; }
+            #sprite-mala-5{ background-position: -100px -1950px; }
+            #sprite-mala-6{ background-position: -100px -2437px; }
+            #sprite-mala-7{ background-position: -100px -2912px; }
+            #sprite-mala-8{ background-position: -100px -3392px; }
+            #sprite-mala-9{ background-position: -100px -3866px; }
+            #sprite-mala-10{ background-position: -100px -4343px; }
+            #sprite-mala-11{ background-position: -100px -4819px; }
+            #sprite-mala-12{ background-position: -100px -5300px; }
+            #sprite-mala-13{ background-position: -100px -5783px; height: 564px; }
+            #sprite-mala-14{ background-position: -100px -6407px; height: 607px; }
+            #sprite-mala-15{ background-position: -100px -7070px; height: 636px; }
+            #sprite-mala-16{ background-position: -100px -7757px; height: 673px; }
+            #sprite-mala-17{ background-position: -100px -8484px; height: 710px; }
+            #sprite-mala-18{ background-position: -100px -9241px; height: 749px; }
+            #sprite-mala-19{ background-position: -100px -10031px; height: 787px; }
+            #sprite-mala-20{ background-position: -100px -10856px; height: 817px; background-color: transparent; } 
+            
+            #sprite-mala-21{ 
+                color: #A61100;
+                display: none;
+                font-family: 'Great Vibes',cursive;
+                font-size: 48px;
+                font-weight: 400;
+                height: 128px;
+                margin-left: 81px;
+                position: absolute;
+                top: 600px;
+                width: 350px;
+                background-color: transparent;
+            }
+            
+            #abre-mala{
+                background: url('bt_entrar.png') no-repeat fixed center 180px rgba(0, 0, 0, 0.6);
+                color: #FFFFFF;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 999999;
+                cursor: pointer;
+            }
+            
+            /* = FOOTER
+            -------------------------------------------------------------- */
+            #loader { display: none; }
+            #loader.active { display: block; position: fixed; left: 0; top: 0;background:#fff; width: 100%; height: 100%; z-index: 9999999; text-align: center; }
+            #loader img{ position: fixed; top: 40%; margin: 0 auto; }
+            
+        </style>
+        
+        <script>
+                jQuery(window).load(function() {
+
+                        jQuery("#loader img").animate({
+                                top: -200
+                        }, 500);
+
+                        jQuery("#loader").fadeOut(1000, function(){
+                                jQuery(this).removeClass('active');
+                        });
+
+                });
+        </script>
+        
+    </head>
+    <body>
+        
+	<div id="loader" class="active"><img src="ajax-loader.gif"/></div>
+	
+        <a id="abre-mala" style="display: none"></a>
+
+        <div id="mala-wrapper" style="display: none">
+            
+            <div id="sprite-mala-1" class="sprite"></div>
+            <div id="sprite-mala-2" class="sprite"></div>
+            <div id="sprite-mala-3" class="sprite"></div>
+            <div id="sprite-mala-4" class="sprite"></div>
+            <div id="sprite-mala-5" class="sprite"></div>
+            <div id="sprite-mala-6" class="sprite"></div>
+            <div id="sprite-mala-7" class="sprite"></div>
+            <div id="sprite-mala-8" class="sprite"></div>
+            <div id="sprite-mala-9" class="sprite"></div>
+            <div id="sprite-mala-10" class="sprite"></div>
+            <div id="sprite-mala-11" class="sprite"></div>
+            <div id="sprite-mala-12" class="sprite"></div>
+            <div id="sprite-mala-13" class="sprite"></div>
+            <div id="sprite-mala-14" class="sprite"></div>
+            <div id="sprite-mala-15" class="sprite"></div>
+            <div id="sprite-mala-16" class="sprite"></div>
+            <div id="sprite-mala-17" class="sprite"></div>
+            <div id="sprite-mala-18" class="sprite"></div>
+            <div id="sprite-mala-19" class="sprite"></div>
+            <div id="sprite-mala-20" class="sprite"></div>
+            <div id="sprite-mala-21"></div>
+            
+        </div>
+        
+    </body>
+</html>
